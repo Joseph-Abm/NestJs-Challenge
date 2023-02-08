@@ -29,8 +29,11 @@ export class UsersService {
     }
 
     async findOneByEmail(email: string) {
+        console.log(email);
         const normalizedEmail = email.toLowerCase();
-        const user = await this.userModel.findOne({ normalizedEmail });
+
+        console.log(normalizedEmail);
+        const user = await this.userModel.findOne({ email: normalizedEmail });
         return user;
     }
 
