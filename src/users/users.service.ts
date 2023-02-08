@@ -11,7 +11,7 @@ export class UsersService {
     async create(email: string, firstName: string, lastName: string, password: string, query) {
 
         const user = new this.userModel({
-            email,
+            email: email.toLowerCase(),
             firstName,
             lastName,
             password
@@ -29,7 +29,8 @@ export class UsersService {
     }
 
     async findOneByEmail(email: string) {
-        const user = await this.userModel.findOne({ email });
+        const normalizedEmail = email.toLowerCase();
+        const user = await this.userModel.findOne({ normalizedEmail });
         return user;
     }
 
