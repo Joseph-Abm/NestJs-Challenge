@@ -14,6 +14,12 @@ async function bootstrap() {
       whitelist: true,
     }),
   );
+
+  app.enableCors({
+    credentials: true,
+    origin: 'http://localhost:8080'
+  });
+
   await app.listen(3000);
 }
 bootstrap();
